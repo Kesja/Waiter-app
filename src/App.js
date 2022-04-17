@@ -15,15 +15,17 @@ function App() {
   useEffect(() => fetchTables(dispatch), [dispatch]);
 
   return (
-    <Container>
-    <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/table/:id" element={<SingleTable />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </Container>
+    <div className='py-3 '>
+      <Container className=' pb-5 pt-1  rounded-3'>
+        <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/table/:id" element={<SingleTable />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+      </Container>
+    </div>
   );
 }
 
