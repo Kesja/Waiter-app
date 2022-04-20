@@ -17,6 +17,9 @@ export const fetchTables = dispatch => {
     .then(tables => dispatch(updateTables(tables)));
 };
 
+
+
+
 const tablesReducer = (statePart = [], action) => {
   switch (action.type) {
     case UPDATE_TABLES:

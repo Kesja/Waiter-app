@@ -1,7 +1,8 @@
 import { Form, Col, Button, Row} from "react-bootstrap";
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAllStatuses} from "../../../redux/statusRedux";
+import { editTable } from "../../../redux/tablesRedux";
 
 
 const TableForm = props => {
@@ -11,8 +12,14 @@ const TableForm = props => {
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(props.maxPeopleAmount);
   const [bill, setBill] = useState(props.bill);
 
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(editTable({status, peopleAmount, maxPeopleAmount, bill}));
+  }
+
   return (
-    <Form key={props.id}>
+    <Form key={props.id} onSubmit={handleSubmit}>
       <Form.Group as={Row} style={{ maxWidth: '18rem' }}>
         <Form.Label column sm="3">Status:</Form.Label>
         <Col sm="9" className='d-flex mb-2'>
